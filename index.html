@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee</title>
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+
+    <!-- Font Awesome CDN Link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Custom CSS File Link  -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+        <a href="#" class="logo">coffee <i class="fas fa-mug-hot"></i></a>
+
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#statistic">Statistic</a>
+            <a href="#review">Review</a>
+            <a href="#book">Feedback</a>
+        </nav>
+
+        <a href="map.php" class="btn">Explore the Map</a>
+
+    </header>
+
+    <!-- HOME -->
+    <section class="home" id="home">
+        <div class="row">
+            <div class="content">
+                <h3>fresh coffee in the morning</h3>
+                <a href="map.php" class="btn">Explore the Map</a>
+            </div>
+
+            <div class="image">
+                <img src="image/home-img-1.png" class="main-home-image" alt="">
+            </div>
+        </div>
+
+        <div class="image-slider">
+            <img src="image/home-img-1.png" alt="">
+            <img src="image/home-img-2.png" alt="">
+            <img src="image/home-img-3.png" alt="">
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <h1 class="heading">About Us <span>Why Choose Us</span></h1>
+
+        <div class="row">
+            <div class="image">
+                <img src="image/about-img.png" alt="A cozy coffee shop">
+            </div>
+
+            <div class="content">
+                <h3 class="title">What's make our coffee special!</h3>
+                <p>Our coffee shop is a blend of passion and dedication. We source only the finest beans from sustainable farms worldwide. Every cup is brewed with care to deliver a rich and memorable coffee experience.</p>
+                <a href="#" class="btn">Read More</a>
+                <div class="icons-container">
+                    <div class="icons">
+                        <img src="image/about-icon-1.png" alt="Quality Coffee">
+                        <h3>Quality Coffee</h3>
+                    </div>
+                    <div class="icons">
+                        <img src="image/about-icon-2.png" alt="Our Branches">
+                        <h3>Our Branches</h3>
+                    </div>
+                    <div class="icons">
+                        <img src="image/about-icon-3.png" alt="Free Delivery">
+                        <h3>Free Delivery</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="statistic" id="statistic">
+        <h1 class="heading">STATISTIK <span>data statistik</span></h1>
+
+        <div class="chart-container" style="display: flex; justify-content: center; align-items: center;">
+            <!-- Canvas element for the pie chart -->
+            <canvas id="chartContainer" style="width: 400px; height: 400px;"></canvas>
+        </div>
+
+        <!-- Configuration options for the pie chart -->
+        <div id="chartConfig" style="text-align: center; margin-top: 10px;">
+            <label for="chartType">Chart Type:</label>
+            <select id="chartType">
+                <option value="pie">Pie</option>
+                <option value="doughnut">Doughnut</option>
+            </select>
+        </div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', function() {
+                // Get the canvas context
+                const ctx = document.getElementById('chartContainer').getContext('2d');
+
+                // Data for the chart
+                const data = {
+                    labels: ["Modern", "Industrial", "Nature", "Vintage", "Minimalis", "Bohemian"],
+                    datasets: [{
+                        label: 'Cafe Themes',
+                        data: [152, 102, 71, 94, 60, 12],
+                        backgroundColor: [
+                            'rgba(54, 162, 235, 0.8)', // Blue
+                            'rgba(201, 203, 207, 0.8)', // Gray
+                            'rgba(75, 192, 192, 0.8)', // Green
+                            'rgba(255, 159, 64, 0.8)', // Orange
+                            'rgba(153, 102, 255, 0.8)', // Purple
+                            'rgba(255, 99, 132, 0.8)' // Red
+                        ],
+                        hoverOffset: 4
+                    }]
+                };
+
+                // Chart configuration
+                let chartConfig = {
+                    type: 'pie',
+                    data: data,
+                    options: {
+                        responsive: false, // Disable responsiveness
+                        maintainAspectRatio: false, // Allow custom aspect ratio
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Statistik Persebaran Cafe Berdasarkan Tema'
+                            }
+                        }
+                    }
+                };
+
+                // Create the chart
+                let chart = new Chart(ctx, chartConfig);
+
+                // Change chart type dynamically
+                document.getElementById('chartType').addEventListener('change', function(e) {
+                    const newChartType = e.target.value;
+
+                    // Destroy the old chart and create a new one
+                    chart.destroy();
+                    chartConfig.type = newChartType;
+                    chart = new Chart(ctx, chartConfig);
+                });
+            });
+        </script>
+    </section>
+
+
+
+
+
+
+    <!-- REVIEW -->
+    <section class="review" id="review">
+        <h1 class="heading">Reviews <span>What People Say</span></h1>
+
+        <div class="swiper review-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="image/pic-1.png" alt="John Doe">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>The best coffee shop I've ever visited! The ambiance is perfect, and the coffee is absolutely delicious.</p>
+                    <h3> Muhammad Dane </h3>
+                    <span>Satisfied Client</span>
+                </div>
+
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="image/pic-2.png" alt="Jane Smith">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>Amazing coffee and pastries! The staff is very friendly and attentive. A must-visit spot in the city!</p>
+                    <h3>Farel Fahreza</h3>
+                    <span>Happy Customer</span>
+                </div>
+
+                <div class="swiper-slide box">
+                    <i class="fas fa-quote-left"></i>
+                    <i class="fas fa-quote-right"></i>
+                    <img src="image/pic-3.png" alt="Michael Brown">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>Love the modern design of this cafe! Perfect place for working remotely or hanging out with friends.</p>
+                    <h3>Putra Anugerah</h3>
+                    <span>Regular Visitor</span>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- BOOK -->
+    <section class="book" id="book">
+        <h1 class="heading">Feedback <span>Us</span></h1>
+
+        <form action="">
+            <input type="text" placeholder="Name" class="box">
+            <input type="email" placeholder="Email" class="box">
+            <input type="number" placeholder="Number" class="box">
+            <textarea name="" placeholder="Message" class="box" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value="send message" class="btn">
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Theme</h3>
+                <a href="#"><i class="fas fa-arrow-right"></i> Modern</a>
+                <a href="#"><i class="fas fa-arrow-right"></i> Industrial</a>
+                <a href="#"><i class="fas fa-arrow-right"></i> Nature</a>
+                <a href="#"><i class="fas fa-arrow-right"></i> Minimalis</a>
+                <a href="#"><i class="fas fa-arrow-right"></i> Vintage</a>
+                <a href="#"><i class="fas fa-arrow-right"></i> Bohemian</a>
+            </div>
+
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#home"><i class="fas fa-arrow-right"></i> home</a>
+                <a href="#about"><i class="fas fa-arrow-right"></i> about</a>
+                <a href="#statistic"><i class="fas fa-arrow-right"></i> statistic</a>
+                <a href="#review"><i class="fas fa-arrow-right"></i> review</a>
+                <a href="#book"><i class="fas fa-arrow-right"></i> book</a>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#"><i class="fas fa-phone"></i> +123-456-7890</a>
+                <a href="#"><i class="fas fa-phone"></i> +111-222-3333</a>
+                <a href="#"><i class="fas fa-envelope"></i> coffee@gmail.com</a>
+                <a href="#"><i class="fas fa-envelope"></i> Perú, Lima</a>
+            </div>
+
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#"><i class="fab fa-facebook-f"></i> facebook</a>
+                <a href="#"><i class="fab fa-twitter"></i> twitter</a>
+                <a href="#"><i class="fab fa-instagram"></i> instagram</a>
+                <a href="#"><i class="fab fa-linkedin"></i> linkedin</a>
+                <a href="#"><i class="fab fa-twitter"></i> twitter</a>
+            </div>
+        </div>
+
+        <div class="credit">created by <span>mr. web designer</span> | all rights reserved</div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- SWIPER -->
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- Custom JS File Link  -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
