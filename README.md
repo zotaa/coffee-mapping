@@ -1,4 +1,4 @@
-==================================================
+=============================================
 DESKRIPSI PROYEK
 ==================================================
 Project ini merupakan aplikasi web berbasis peta yang dirancang untuk memvisualisasikan persebaran kafe di wilayah Bandung. Dataset yang digunakan bersumber dari publikasi resmi Badan Pusat Statistik (BPS) Bandung Barat tahun 2022.
