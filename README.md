@@ -20,16 +20,3 @@ CARA MENGGUNAKAN
 - Lihat persebaran kafe
 - Klik marker untuk detail
 
-GITHUB
-==================================================
-git init
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/username/coffee-mapping.git
-git push -u origin main
-
-CATATAN
-==================================================
-- Jangan push config.php
-- Gunakan config.example.php
-- Jalankan via localhost, bukan Live Server
